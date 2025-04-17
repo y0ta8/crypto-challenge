@@ -1,9 +1,10 @@
 from caesar_cipher import caesar_encrypt, caesar_decrypt, brute_force_caesar
 from vigenere_cipher import vigenere_encrypt, vigenere_decrypt
+from base64_cipher import base64_encode, base64_decode
 
 def main():
     print("=== Crypto Cipher Tool ===")
-    choice = input("Do you want to (E)ncrypt, (D)ecrypt, (B)rute force (Caesar), or (V)igenère? ").lower()
+    choice = input("Do you want to (E)ncrypt, (D)ecrypt, (B)rute force (Caesar), (V)igenère, or (B64) Base64? ").lower()
 
     if choice in ['e', 'd', 'b']:
         text = input("Enter your message: ")
@@ -34,9 +35,23 @@ def main():
         else:
             print("Invalid Vigenère action. Use E or D.")
 
+    elif choice == 'b64':
+        action = input("Do you want to (E)ncode or (D)ecode Base64? ").lower()
+        text = input("Enter your message: ")
+
+        if action == 'e':
+            encoded = base64_encode(text)
+            print("Encoded Base64 message:", encoded)
+        elif action == 'd':
+            decoded = base64_decode(text)
+            print("Decoded message:", decoded)
+        else:
+            print("Invalid action. Use E or D for Base64.")
+
     else:
-        print("Invalid choice. Please enter E, D, B, or V.")
+        print("Invalid choice. Please enter E, D, B, V, or B64.")
 
 if __name__ == "__main__":
     main()
+
 
