@@ -13,7 +13,10 @@ This project is focused on building an encryption and decryption tool using diff
 - Implemented Vigenère Cipher encryption and decryption
 - Updated main.py to support Vigenère Cipher interaction
 
-### 🔄 Day 3: Base64 Encoding/Decoding *(coming soon)*
+### ✅ Day 3: Base64 Encoding/Decoding
+- Implemented Base64 encoding and decoding functionality using Python's `base64` module
+- Added encode and decode functions to the CLI tool
+
 ### ⏳ Day 4–30: More ciphers, file encryption, GUI, polish, and more!
 
 ## Usage
