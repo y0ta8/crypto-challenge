@@ -17,12 +17,20 @@ This project is focused on building an encryption and decryption tool using diff
 - Implemented Base64 encoding and decoding functionality using Python's `base64` module
 - Added encode and decode functions to the CLI tool
 
-### ⏳ Day 4–30: More ciphers, file encryption, GUI, polish, and more!
+### ✅ Day 4: Unit Testing & Validation
+- Implemented unit tests for **Caesar Cipher**, **Vigenère Cipher**, and **Base64 Encoding/Decoding**.
+- Ensured all algorithms are thoroughly tested for correctness and edge cases.
+  
+### ⏳ Day 5–30: More ciphers, file encryption, GUI, polish, and more!
 
 ## Usage
 1. Clone the repo.
 2. Run the `main.py` file.
 3. Follow the prompts to encode or decode a message.
 
-## License
-MIT License
+## Testing
+To ensure the functionality of the algorithms, unit tests have been written and can be run with:
+
+```bash
+python test_crypto.py
+
