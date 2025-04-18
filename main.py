@@ -6,22 +6,25 @@ def main():
     print("=== Crypto Cipher Tool ===")
     choice = input("Do you want to (E)ncrypt, (D)ecrypt, (B)rute force (Caesar), (V)igenère, or (B64) Base64? ").lower()
 
-    if choice in ['e', 'd', 'b']:
+    if choice in ['e', 'd', 'b']:  # Caesar Cipher Section
         text = input("Enter your message: ")
-        shift = int(input("Enter shift number (e.g. 3): "))
-
-        if choice == 'e':
-            encrypted = caesar_encrypt(text, shift)
-            print("Encrypted message:", encrypted)
-        elif choice == 'd':
-            decrypted = caesar_decrypt(text, shift)
-            print("Decrypted message:", decrypted)
-        elif choice == 'b':
+        
+        if choice in ['e', 'd']:  # Encryption/Decryption
+            shift = int(input("Enter shift number (e.g. 3): "))
+            if choice == 'e':
+                encrypted = caesar_encrypt(text, shift)
+                print("Encrypted message:", encrypted)
+            elif choice == 'd':
+                decrypted = caesar_decrypt(text, shift)
+                print("Decrypted message:", decrypted)
+        
+        elif choice == 'b':  # Brute Force Caesar
+            shift = int(input("Enter shift number (e.g. 3): "))
             encrypted_message = caesar_encrypt(text, shift)  # Encrypt first for brute-force testing
             print("\n--- Brute Force Results ---")
             brute_force_caesar(encrypted_message)
 
-    elif choice == 'v':
+    elif choice == 'v':  # Vigenère Cipher Section
         action = input("Encrypt or Decrypt with Vigenère? (E/D): ").lower()
         text = input("Enter your message: ")
         key = input("Enter your key (letters only): ")
@@ -35,7 +38,7 @@ def main():
         else:
             print("Invalid Vigenère action. Use E or D.")
 
-    elif choice == 'b64':
+    elif choice == 'b64':  # Base64 Encoding/Decoding Section
         action = input("Do you want to (E)ncode or (D)ecode Base64? ").lower()
         text = input("Enter your message: ")
 
