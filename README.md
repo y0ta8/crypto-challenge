@@ -20,8 +20,14 @@ This project is focused on building an encryption and decryption tool using diff
 ### ✅ Day 4: Unit Testing & Validation
 - Implemented unit tests for **Caesar Cipher**, **Vigenère Cipher**, and **Base64 Encoding/Decoding**.
 - Ensured all algorithms are thoroughly tested for correctness and edge cases.
-  
-### ⏳ Day 5–30: More ciphers, file encryption, GUI, polish, and more!
+
+
+
+  ✅ Day 5: Help Menu & CLI Enhancement  
+- Added an interactive help menu for better user guidance  
+- Users can now type 'help' at any time to view available ciphers and commands  
+- Improved CLI interface for a more intuitive experience
+
 
 ## Usage
 1. Clone the repo.
