@@ -23,7 +23,9 @@ This project is focused on building an encryption and decryption tool using diff
 
 
 
-  ✅ Day 5: Help Menu & CLI Enhancement  
+
+
+###  ✅ Day 5: Help Menu & CLI Enhancement  
 - Added an interactive help menu for better user guidance  
 - Users can now type 'help' at any time to view available ciphers and commands  
 - Improved CLI interface for a more intuitive experience
@@ -39,4 +41,11 @@ To ensure the functionality of the algorithms, unit tests have been written and 
 
 ```bash
 python test_crypto.py
+
+
+### ✅ Day 6 : ROT13 Cipher
+- A simple Caesar-based cipher that shifts letters by 13.
+- Same function for both encryption and decryption.
+- Use command: `R13`
+
 

@@ -2,14 +2,25 @@ from caesar_cipher import caesar_encrypt, caesar_decrypt, brute_force_caesar
 from vigenere_cipher import vigenere_encrypt, vigenere_decrypt
 from base64_cipher import base64_encode, base64_decode
 
+def rot13(text):
+    result = ""
+    for char in text:
+        if char.isalpha():
+            base = ord('A') if char.isupper() else ord('a')
+            result += chr((ord(char) - base + 13) % 26 + base)
+        else:
+            result += char
+    return result
+
 def show_help():
     print("\n🔐 Crypto Challenge - Help Menu")
     print("Available Options:")
-    print("  E   - Encrypt using Caesar Cipher")
-    print("  D   - Decrypt using Caesar Cipher")
-    print("  B   - Brute-force Caesar Cipher")
-    print("  V   - Use Vigenère Cipher (encrypt/decrypt)")
-    print("  B64 - Base64 Encoding/Decoding")
+    print("  E    - Encrypt using Caesar Cipher")
+    print("  D    - Decrypt using Caesar Cipher")
+    print("  B    - Brute-force Caesar Cipher")
+    print("  V    - Use Vigenère Cipher (encrypt/decrypt)")
+    print("  B64  - Base64 Encoding/Decoding")
+    print("  R13  - ROT13 Cipher (symmetric)")
     print("  HELP - Show this help menu")
     print("  EXIT - Quit the tool\n")
 
@@ -18,7 +29,7 @@ def main():
     show_help()
 
     while True:
-        choice = input("Choose an option (E, D, B, V, B64, HELP, EXIT): ").lower()
+        choice = input("Choose an option (E, D, B, V, B64, R13, HELP, EXIT): ").lower()
 
         if choice == 'exit':
             print("👋 Goodbye!")
@@ -69,6 +80,11 @@ def main():
                 print("Decoded message:", decoded)
             else:
                 print("Invalid action. Use E or D for Base64.")
+
+        elif choice == 'r13':  # ROT13 Section
+            text = input("Enter your message: ")
+            result = rot13(text)
+            print("ROT13 result:", result)
 
         else:
             print("❌ Invalid choice. Type 'help' to see available options.")
