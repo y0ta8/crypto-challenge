@@ -49,3 +49,18 @@ python test_crypto.py
 - Use command: `R13`
 
 
+
+### ✅ Day 7 Playfair Cipher
+
+The **Playfair Cipher** encrypts and decrypts messages using a 5x5 matrix derived from a keyword. It operates on pairs of letters in the message.
+
+#### How to Use
+- Choose the `PF` option in the menu.
+- Input the message and a keyword.
+- The message will be encrypted or decrypted based on your choice.
+
+#### Example:
+- **Input**: `HELLO WORLD`
+- **Keyword**: `KEYWORD`
+- **Encrypted Output**: `KEMCR HOLOV`
+
