@@ -12,6 +12,16 @@ def rot13(text):
             result += char
     return result
 
+def atbash_cipher(text):
+    result = ""
+    for char in text:
+        if char.isalpha():
+            base = ord('A') if char.isupper() else ord('a')
+            result += chr(base + (25 - (ord(char) - base)))
+        else:
+            result += char
+    return result
+
 def show_help():
     print("\n🔐 Crypto Challenge - Help Menu")
     print("Available Options:")
@@ -21,6 +31,7 @@ def show_help():
     print("  V    - Use Vigenère Cipher (encrypt/decrypt)")
     print("  B64  - Base64 Encoding/Decoding")
     print("  R13  - ROT13 Cipher (symmetric)")
+    print("  ATB  - Atbash Cipher (symmetric)")
     print("  HELP - Show this help menu")
     print("  EXIT - Quit the tool\n")
 
@@ -29,7 +40,7 @@ def main():
     show_help()
 
     while True:
-        choice = input("Choose an option (E, D, B, V, B64, R13, HELP, EXIT): ").lower()
+        choice = input("Choose an option (E, D, B, V, B64, R13, ATB, HELP, EXIT): ").lower()
 
         if choice == 'exit':
             print("👋 Goodbye!")
@@ -85,6 +96,11 @@ def main():
             text = input("Enter your message: ")
             result = rot13(text)
             print("ROT13 result:", result)
+
+        elif choice == 'atb':  # Atbash Cipher Section
+            text = input("Enter your message: ")
+            result = atbash_cipher(text)
+            print("Atbash result:", result)
 
         else:
             print("❌ Invalid choice. Type 'help' to see available options.")
