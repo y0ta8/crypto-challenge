@@ -60,3 +60,8 @@ To ensure the functionality of the algorithms, unit tests have been written and 
 
 ```bash
 python test_crypto.py
+
+- ✅ **Day 8**: Transposition Cipher  
+  Implemented Columnar Transposition encryption and decryption.  
+  Integrated into the main CLI tool with keyword input.
+
