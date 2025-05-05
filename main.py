@@ -1,6 +1,7 @@
 from caesar_cipher import caesar_encrypt, caesar_decrypt, brute_force_caesar
 from vigenere_cipher import vigenere_encrypt, vigenere_decrypt
 from base64_cipher import base64_encode, base64_decode
+from transposition import encrypt_columnar_transposition, decrypt_columnar_transposition  # ✅ NEW
 
 def rot13(text):
     result = ""
@@ -32,6 +33,7 @@ def show_help():
     print("  B64  - Base64 Encoding/Decoding")
     print("  R13  - ROT13 Cipher (symmetric)")
     print("  ATB  - Atbash Cipher (symmetric)")
+    print("  T    - Transposition Cipher (encrypt/decrypt)")  # ✅ NEW
     print("  HELP - Show this help menu")
     print("  EXIT - Quit the tool\n")
 
@@ -40,7 +42,7 @@ def main():
     show_help()
 
     while True:
-        choice = input("Choose an option (E, D, B, V, B64, R13, ATB, HELP, EXIT): ").lower()
+        choice = input("Choose an option (E, D, B, V, B64, R13, ATB, T, HELP, EXIT): ").lower()
 
         if choice == 'exit':
             print("👋 Goodbye!")
@@ -61,7 +63,7 @@ def main():
 
             elif choice == 'b':  # Brute Force Caesar
                 shift = int(input("Enter shift number (e.g. 3): "))
-                encrypted_message = caesar_encrypt(text, shift)  # Encrypt first for brute-force testing
+                encrypted_message = caesar_encrypt(text, shift)
                 print("\n--- Brute Force Results ---")
                 brute_force_caesar(encrypted_message)
 
@@ -92,15 +94,29 @@ def main():
             else:
                 print("Invalid action. Use E or D for Base64.")
 
-        elif choice == 'r13':  # ROT13 Section
+        elif choice == 'r13':
             text = input("Enter your message: ")
             result = rot13(text)
             print("ROT13 result:", result)
 
-        elif choice == 'atb':  # Atbash Cipher Section
+        elif choice == 'atb':
             text = input("Enter your message: ")
             result = atbash_cipher(text)
             print("Atbash result:", result)
+
+        elif choice == 't':  # ✅ NEW: Transposition Cipher
+            action = input("Encrypt or Decrypt with Transposition? (E/D): ").lower()
+            text = input("Enter your message: ")
+            keyword = input("Enter your keyword: ")
+
+            if action == 'e':
+                encrypted = encrypt_columnar_transposition(text, keyword)
+                print("Encrypted message:", encrypted)
+            elif action == 'd':
+                decrypted = decrypt_columnar_transposition(text, keyword)
+                print("Decrypted message:", decrypted)
+            else:
+                print("Invalid action. Use E or D for Transposition.")
 
         else:
             print("❌ Invalid choice. Type 'help' to see available options.")
