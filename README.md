@@ -65,3 +65,8 @@ python test_crypto.py
   Implemented Columnar Transposition encryption and decryption.  
   Integrated into the main CLI tool with keyword input.
 
+
+- ✅ **Day 9**: Playfair Cipher  
+  Implemented Playfair Cipher (encrypt/decrypt)  
+  Integrated it into the main CLI tool with interactive support
+
