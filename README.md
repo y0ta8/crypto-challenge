@@ -46,6 +46,14 @@ This project is focused on building an encryption and decryption tool using diff
 - **Keyword**: `KEYWORD`
 - **Encrypted Output**: `KEMCR HOLOV`
 
+### ✅ Day 8: Transposition Cipher
+- Implemented Columnar Transposition encryption and decryption
+- Integrated into the main CLI tool with keyword input
+
+### ✅ Day 9: Playfair Cipher (Final Integration)
+- Integrated Playfair Cipher into the CLI menu with interactive support
+- Users can now encrypt/decrypt using the `PF` option directly from the CLI
+
 ---
 
 ## Usage
@@ -60,13 +68,3 @@ To ensure the functionality of the algorithms, unit tests have been written and 
 
 ```bash
 python test_crypto.py
-
-- ✅ **Day 8**: Transposition Cipher  
-  Implemented Columnar Transposition encryption and decryption.  
-  Integrated into the main CLI tool with keyword input.
-
-
-- ✅ **Day 9**: Playfair Cipher  
-  Implemented Playfair Cipher (encrypt/decrypt)  
-  Integrated it into the main CLI tool with interactive support
-
