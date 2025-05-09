@@ -1,7 +1,8 @@
 from caesar_cipher import caesar_encrypt, caesar_decrypt, brute_force_caesar
 from vigenere_cipher import vigenere_encrypt, vigenere_decrypt
 from base64_cipher import base64_encode, base64_decode
-from transposition import encrypt_columnar_transposition, decrypt_columnar_transposition  # ✅ NEW
+from transposition import encrypt_columnar_transposition, decrypt_columnar_transposition
+from playfair_cipher import encrypt_playfair, decrypt_playfair  # ✅ NEW
 
 def rot13(text):
     result = ""
@@ -33,7 +34,8 @@ def show_help():
     print("  B64  - Base64 Encoding/Decoding")
     print("  R13  - ROT13 Cipher (symmetric)")
     print("  ATB  - Atbash Cipher (symmetric)")
-    print("  T    - Transposition Cipher (encrypt/decrypt)")  # ✅ NEW
+    print("  T    - Transposition Cipher (encrypt/decrypt)")
+    print("  P    - Playfair Cipher (encrypt/decrypt)")  # ✅ NEW
     print("  HELP - Show this help menu")
     print("  EXIT - Quit the tool\n")
 
@@ -42,7 +44,7 @@ def main():
     show_help()
 
     while True:
-        choice = input("Choose an option (E, D, B, V, B64, R13, ATB, T, HELP, EXIT): ").lower()
+        choice = input("Choose an option (E, D, B, V, B64, R13, ATB, T, P, HELP, EXIT): ").lower()
 
         if choice == 'exit':
             print("👋 Goodbye!")
@@ -104,7 +106,7 @@ def main():
             result = atbash_cipher(text)
             print("Atbash result:", result)
 
-        elif choice == 't':  # ✅ NEW: Transposition Cipher
+        elif choice == 't':  # Transposition Cipher
             action = input("Encrypt or Decrypt with Transposition? (E/D): ").lower()
             text = input("Enter your message: ")
             keyword = input("Enter your keyword: ")
@@ -117,6 +119,20 @@ def main():
                 print("Decrypted message:", decrypted)
             else:
                 print("Invalid action. Use E or D for Transposition.")
+
+        elif choice == 'p':  # ✅ NEW: Playfair Cipher
+            action = input("Encrypt or Decrypt with Playfair? (E/D): ").lower()
+            text = input("Enter your message: ")
+            key = input("Enter your keyword (no spaces, letters only): ")
+
+            if action == 'e':
+                encrypted = encrypt_playfair(text, key)
+                print("Encrypted message:", encrypted)
+            elif action == 'd':
+                decrypted = decrypt_playfair(text, key)
+                print("Decrypted message:", decrypted)
+            else:
+                print("Invalid action. Use E or D for Playfair.")
 
         else:
             print("❌ Invalid choice. Type 'help' to see available options.")
