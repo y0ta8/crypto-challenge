@@ -54,6 +54,13 @@ This project is focused on building an encryption and decryption tool using diff
 - Integrated Playfair Cipher into the CLI menu with interactive support
 - Users can now encrypt/decrypt using the `PF` option directly from the CLI
 
+
+### ✅ Day 10: 🔐 Affine Cipher (Encryption & Decryption)
+- Implemented Affine Cipher for both encryption and decryption.
+- Integrated Affine Cipher into the main CLI tool with input validation for keys.
+- Updated help menu to include 'A' option for Affine Cipher.
+
+
 ---
 
 ## Usage
