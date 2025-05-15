@@ -2,7 +2,8 @@ from caesar_cipher import caesar_encrypt, caesar_decrypt, brute_force_caesar
 from vigenere_cipher import vigenere_encrypt, vigenere_decrypt
 from base64_cipher import base64_encode, base64_decode
 from transposition import encrypt_columnar_transposition, decrypt_columnar_transposition
-from playfair_cipher import encrypt_playfair, decrypt_playfair  # ✅ NEW
+from playfair_cipher import encrypt_playfair, decrypt_playfair
+from affine_cipher import encrypt_affine, decrypt_affine  # ✅ NEW
 
 def rot13(text):
     result = ""
@@ -35,7 +36,8 @@ def show_help():
     print("  R13  - ROT13 Cipher (symmetric)")
     print("  ATB  - Atbash Cipher (symmetric)")
     print("  T    - Transposition Cipher (encrypt/decrypt)")
-    print("  P    - Playfair Cipher (encrypt/decrypt)")  # ✅ NEW
+    print("  P    - Playfair Cipher (encrypt/decrypt)")
+    print("  A    - Affine Cipher (encrypt/decrypt)")  # ✅ NEW
     print("  HELP - Show this help menu")
     print("  EXIT - Quit the tool\n")
 
@@ -44,7 +46,7 @@ def main():
     show_help()
 
     while True:
-        choice = input("Choose an option (E, D, B, V, B64, R13, ATB, T, P, HELP, EXIT): ").lower()
+        choice = input("Choose an option (E, D, B, V, B64, R13, ATB, T, P, A, HELP, EXIT): ").lower()
 
         if choice == 'exit':
             print("👋 Goodbye!")
@@ -84,7 +86,7 @@ def main():
                 print("Invalid Vigenère action. Use E or D.")
 
         elif choice == 'b64':  # Base64 Encoding/Decoding Section
-            action = input("Do you want to (E)ncode or (D)ecode Base64? ").lower()
+            action = input("Do you want to (E)ncode or (D)decode Base64? ").lower()
             text = input("Enter your message: ")
 
             if action == 'e':
@@ -120,7 +122,7 @@ def main():
             else:
                 print("Invalid action. Use E or D for Transposition.")
 
-        elif choice == 'p':  # ✅ NEW: Playfair Cipher
+        elif choice == 'p':  # Playfair Cipher
             action = input("Encrypt or Decrypt with Playfair? (E/D): ").lower()
             text = input("Enter your message: ")
             key = input("Enter your keyword (no spaces, letters only): ")
@@ -133,6 +135,24 @@ def main():
                 print("Decrypted message:", decrypted)
             else:
                 print("Invalid action. Use E or D for Playfair.")
+
+        elif choice == 'a':  # ✅ NEW: Affine Cipher
+            action = input("Encrypt or Decrypt with Affine? (E/D): ").lower()
+            text = input("Enter your message: ")
+            try:
+                a = int(input("Enter key 'a' (must be coprime with 26): "))
+                b = int(input("Enter key 'b': "))
+
+                if action == 'e':
+                    encrypted = encrypt_affine(text, a, b)
+                    print("Encrypted message:", encrypted)
+                elif action == 'd':
+                    decrypted = decrypt_affine(text, a, b)
+                    print("Decrypted message:", decrypted)
+                else:
+                    print("Invalid action. Use E or D for Affine.")
+            except ValueError as e:
+                print("❌ Error:", e)
 
         else:
             print("❌ Invalid choice. Type 'help' to see available options.")
