@@ -60,6 +60,19 @@ This project is focused on building an encryption and decryption tool using diff
 - Integrated Affine Cipher into the main CLI tool with input validation for keys.
 - Updated help menu to include 'A' option for Affine Cipher.
 
+### ✅ Day 11: ROT13 Cipher Support
+
+- Added a new cipher: **ROT13**
+- Simple symmetric letter substitution cipher (A ↔ N, B ↔ O, etc.)
+- Integrated into CLI tool with the option `R13`
+- Usage example:
+  ```bash
+  python main.py
+  Choose an option: R13
+  Enter your message: HELLO
+  ROT13 result: URYYB
+
+
 
 ---
 
