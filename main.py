@@ -4,6 +4,8 @@ from base64_cipher import base64_encode, base64_decode
 from transposition import encrypt_columnar_transposition, decrypt_columnar_transposition
 from playfair_cipher import encrypt_playfair, decrypt_playfair
 from affine_cipher import encrypt_affine, decrypt_affine  # ✅ NEW
+from rot13_cipher import rot13  # ✅ NEW
+
 
 def rot13(text):
     result = ""
@@ -35,9 +37,26 @@ def show_help():
     print("  B64  - Base64 Encoding/Decoding")
     print("  R13  - ROT13 Cipher (symmetric)")
     print("  ATB  - Atbash Cipher (symmetric)")
-    print("  T    - Transposition Cipher (encrypt/decrypt)")
+    print("  T    - Transposition Cipher (enfrom caesar_cipher import caesar_encrypt, caesar_decrypt, brute_force_caesar
+from vigenere_cipher import vigenere_encrypt, vigenere_decrypt
+from base64_cipher import base64_encode, base64_decode
+from transposition import encrypt_columnar_transposition, decrypt_columnar_transposition
+from playfair_cipher import encrypt_playfair, decrypt_playfair
+from affine_cipher import encrypt_affine, decrypt_affine
+from rot13_cipher import rot13  # ✅ NEW
+
+def show_help():
+    print("\nAvailable Options:")
+    print("  E    - Encrypt with Caesar Cipher")
+    print("  D    - Decrypt with Caesar Cipher")
+    print("  B    - Brute-force Caesar Cipher")
+    print("  V    - Vigenère Cipher (encrypt/decrypt)")
+    print("  B64  - Base64 Encode/Decode")
+    print("  R13  - ROT13 Cipher (simple symmetric encryption)")  # ✅ NEW
+    print("  ATB  - Atbash Cipher (encrypt/decrypt)")
+    print("  T    - Columnar Transposition Cipher (encrypt/decrypt)")
     print("  P    - Playfair Cipher (encrypt/decrypt)")
-    print("  A    - Affine Cipher (encrypt/decrypt)")  # ✅ NEW
+    print("  A    - Affine Cipher (encrypt/decrypt)")
     print("  HELP - Show this help menu")
     print("  EXIT - Quit the tool\n")
 
@@ -98,12 +117,12 @@ def main():
             else:
                 print("Invalid action. Use E or D for Base64.")
 
-        elif choice == 'r13':
+        elif choice == 'r13':  # ✅ ROT13 Section
             text = input("Enter your message: ")
             result = rot13(text)
             print("ROT13 result:", result)
 
-        elif choice == 'atb':
+        elif choice == 'atb':  # Atbash Cipher
             text = input("Enter your message: ")
             result = atbash_cipher(text)
             print("Atbash result:", result)
@@ -136,7 +155,7 @@ def main():
             else:
                 print("Invalid action. Use E or D for Playfair.")
 
-        elif choice == 'a':  # ✅ NEW: Affine Cipher
+        elif choice == 'a':  # Affine Cipher
             action = input("Encrypt or Decrypt with Affine? (E/D): ").lower()
             text = input("Enter your message: ")
             try:
