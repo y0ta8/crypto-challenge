@@ -73,6 +73,21 @@ This project is focused on building an encryption and decryption tool using diff
   ROT13 result: URYYB
 
 
+### ✅ Day 12: Rail Fence Cipher
+
+- Added Rail Fence Cipher (encryption & decryption)
+- Zigzag transposition cipher using a number of rails as key
+- Integrated into CLI with option `RF`
+- Example usage:
+  ```bash
+  python main.py
+  Choose an option: RF
+  E
+  Enter your message: HELLO WORLD
+  Enter number of rails: 3
+  Encrypted message: HOLELWRDLO
+
+
 
 ---
 
