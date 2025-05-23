@@ -87,7 +87,10 @@ This project is focused on building an encryption and decryption tool using diff
   Enter number of rails: 3
   Encrypted message: HOLELWRDLO
 
-
+### ✅ Day 13
+- Implemented **Hill Cipher** using a fixed 2x2 invertible matrix
+- Supports encryption and decryption with matrix math
+- Integrated with CLI under option `HILL`
 
 ---
 

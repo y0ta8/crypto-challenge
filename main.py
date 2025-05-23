@@ -1,11 +1,14 @@
-ffrom caesar_cipher import caesar_encrypt, caesar_decrypt, brute_force_caesar
+from caesar_cipher import caesar_encrypt, caesar_decrypt, brute_force_caesar
 from vigenere_cipher import vigenere_encrypt, vigenere_decrypt
 from base64_cipher import base64_encode, base64_decode
 from transposition import encrypt_columnar_transposition, decrypt_columnar_transposition
 from playfair_cipher import encrypt_playfair, decrypt_playfair
 from affine_cipher import encrypt_affine, decrypt_affine
 from rot13_cipher import rot13
-from rail_fence import rail_fence_encrypt, rail_fence_decrypt  # ✅ NEW
+from rail_fence import rail_fence_encrypt, rail_fence_decrypt
+from hill_cipher import hill_encrypt, hill_decrypt  # ✅ NEW
+
+import numpy as np
 
 def rot13(text):
     result = ""
@@ -40,7 +43,8 @@ def show_help():
     print("  T    - Transposition Cipher (encrypt/decrypt)")
     print("  P    - Playfair Cipher (encrypt/decrypt)")
     print("  A    - Affine Cipher (encrypt/decrypt)")
-    print("  R    - Rail Fence Cipher (encrypt/decrypt)")  # ✅ NEW
+    print("  R    - Rail Fence Cipher (encrypt/decrypt)")
+    print("  HILL - Hill Cipher (encrypt/decrypt)")  # ✅ NEW
     print("  HELP - Show this help menu")
     print("  EXIT - Quit the tool\n")
 
@@ -49,7 +53,7 @@ def main():
     show_help()
 
     while True:
-        choice = input("Choose an option (E, D, B, V, B64, R13, ATB, T, P, A, R, HELP, EXIT): ").lower()
+        choice = input("Choose an option (E, D, B, V, B64, R13, ATB, T, P, A, R, HILL, HELP, EXIT): ").lower()
 
         if choice == 'exit':
             print("👋 Goodbye!")
@@ -151,7 +155,7 @@ def main():
             except ValueError as e:
                 print("❌ Error:", e)
 
-        elif choice == 'r':  # ✅ Rail Fence Cipher
+        elif choice == 'r':
             action = input("Encrypt or Decrypt with Rail Fence? (E/D): ").lower()
             text = input("Enter your message: ")
             try:
@@ -168,6 +172,22 @@ def main():
                     print("Invalid action. Use E or D for Rail Fence.")
             except ValueError:
                 print("Rails must be a valid integer.")
+
+        elif choice == 'hill':
+            action = input("Encrypt or Decrypt with Hill? (E/D): ").lower()
+            text = input("Enter your message: ")
+            try:
+                key_matrix = np.array([[3, 3], [2, 5]])  # Fixed invertible 2x2 matrix
+                if action == 'e':
+                    encrypted = hill_encrypt(text, key_matrix)
+                    print("Encrypted message:", encrypted)
+                elif action == 'd':
+                    decrypted = hill_decrypt(text, key_matrix)
+                    print("Decrypted message:", decrypted)
+                else:
+                    print("Invalid action. Use E or D for Hill Cipher.")
+            except ValueError as e:
+                print("❌ Error:", e)
 
         else:
             print("❌ Invalid choice. Type 'help' to see available options.")
