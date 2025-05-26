@@ -6,7 +6,8 @@ from playfair_cipher import encrypt_playfair, decrypt_playfair
 from affine_cipher import encrypt_affine, decrypt_affine
 from rot13_cipher import rot13
 from rail_fence import rail_fence_encrypt, rail_fence_decrypt
-from hill_cipher import hill_encrypt, hill_decrypt  # ✅ NEW
+from hill_cipher import hill_encrypt, hill_decrypt  # ✅ Hill Cipher
+from xor_cipher import xor_encrypt_decrypt          # ✅ XOR Cipher
 
 import numpy as np
 
@@ -44,7 +45,8 @@ def show_help():
     print("  P    - Playfair Cipher (encrypt/decrypt)")
     print("  A    - Affine Cipher (encrypt/decrypt)")
     print("  R    - Rail Fence Cipher (encrypt/decrypt)")
-    print("  HILL - Hill Cipher (encrypt/decrypt)")  # ✅ NEW
+    print("  HILL - Hill Cipher (encrypt/decrypt)")
+    print("  XOR  - XOR Cipher (encrypt/decrypt)")  # ✅ Added
     print("  HELP - Show this help menu")
     print("  EXIT - Quit the tool\n")
 
@@ -53,7 +55,7 @@ def main():
     show_help()
 
     while True:
-        choice = input("Choose an option (E, D, B, V, B64, R13, ATB, T, P, A, R, HILL, HELP, EXIT): ").lower()
+        choice = input("Choose an option (E, D, B, V, B64, R13, ATB, T, P, A, R, HILL, XOR, HELP, EXIT): ").lower()
 
         if choice == 'exit':
             print("👋 Goodbye!")
@@ -186,6 +188,15 @@ def main():
                     print("Decrypted message:", decrypted)
                 else:
                     print("Invalid action. Use E or D for Hill Cipher.")
+            except ValueError as e:
+                print("❌ Error:", e)
+
+        elif choice == 'xor':
+            text = input("Enter your message: ")
+            key = input("Enter your key (non-empty): ")
+            try:
+                result = xor_encrypt_decrypt(text, key)
+                print("XOR result:", result)
             except ValueError as e:
                 print("❌ Error:", e)
 

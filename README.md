@@ -92,6 +92,11 @@ This project is focused on building an encryption and decryption tool using diff
 - Supports encryption and decryption with matrix math
 - Integrated with CLI under option `HILL`
 
+
+### ✅ Day 14: Atbash Cipher
+- Implemented Atbash Cipher encryption and decryption
+- The cipher maps each letter to its reverse in the alphabet (A ↔ Z, B ↔ Y, etc.)
+- Integrated Atbash Cipher into the CLI tool
 ---
 
 ## Usage
