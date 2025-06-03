@@ -1,67 +1,58 @@
+import unittest
+import os
+import numpy as np
 from caesar_cipher import caesar_encrypt, caesar_decrypt, brute_force_caesar
 from vigenere_cipher import vigenere_encrypt, vigenere_decrypt
 from base64_cipher import base64_encode, base64_decode
-from transposition import encrypt_columnar_transposition, decrypt_columnar_transposition
+from rot13_cipher import rot13
+from atbash_cipher import atbash_cipher
+from columnar_transposition import encrypt_columnar_transposition, decrypt_columnar_transposition
 from playfair_cipher import encrypt_playfair, decrypt_playfair
 from affine_cipher import encrypt_affine, decrypt_affine
-from rot13_cipher import rot13
-from rail_fence import rail_fence_encrypt, rail_fence_decrypt
-from hill_cipher import hill_encrypt, hill_decrypt  # ✅ Hill Cipher
-from xor_cipher import xor_encrypt_decrypt          # ✅ XOR Cipher
+from rail_fence_cipher import rail_fence_encrypt, rail_fence_decrypt
+from hill_cipher import hill_encrypt, hill_decrypt
+from xor_cipher import xor_encrypt_decrypt
 
-import numpy as np
-
-def rot13(text):
-    result = ""
-    for char in text:
-        if char.isalpha():
-            base = ord('A') if char.isupper() else ord('a')
-            result += chr((ord(char) - base + 13) % 26 + base)
-        else:
-            result += char
-    return result
-
-def atbash_cipher(text):
-    result = ""
-    for char in text:
-        if char.isalpha():
-            base = ord('A') if char.isupper() else ord('a')
-            result += chr(base + (25 - (ord(char) - base)))
-        else:
-            result += char
-    return result
 
 def show_help():
-    print("\n🔐 Crypto Challenge - Help Menu")
-    print("Available Options:")
-    print("  E    - Encrypt using Caesar Cipher")
-    print("  D    - Decrypt using Caesar Cipher")
-    print("  B    - Brute-force Caesar Cipher")
-    print("  V    - Use Vigenère Cipher (encrypt/decrypt)")
-    print("  B64  - Base64 Encoding/Decoding")
-    print("  R13  - ROT13 Cipher (symmetric)")
-    print("  ATB  - Atbash Cipher (symmetric)")
-    print("  T    - Transposition Cipher (encrypt/decrypt)")
-    print("  P    - Playfair Cipher (encrypt/decrypt)")
-    print("  A    - Affine Cipher (encrypt/decrypt)")
-    print("  R    - Rail Fence Cipher (encrypt/decrypt)")
-    print("  HILL - Hill Cipher (encrypt/decrypt)")
-    print("  XOR  - XOR Cipher (encrypt/decrypt)")  # ✅ Added
-    print("  HELP - Show this help menu")
-    print("  EXIT - Quit the tool\n")
+    print("\nAvailable Options:")
+    print(" E   - Encrypt with Caesar")
+    print(" D   - Decrypt with Caesar")
+    print(" B   - Brute-force Caesar")
+    print(" V   - Vigenère Cipher")
+    print(" B64 - Base64 Encode/Decode")
+    print(" R13 - ROT13 Cipher")
+    print(" ATB - Atbash Cipher")
+    print(" T   - Columnar Transposition")
+    print(" P   - Playfair Cipher")
+    print(" A   - Affine Cipher")
+    print(" R   - Rail Fence Cipher")
+    print(" HILL - Hill Cipher")
+    print(" XOR - XOR Cipher")
+    print(" TEST - Run unit tests")
+    print(" HELP - Show help menu")
+    print(" EXIT - Exit the program\n")
+
 
 def main():
     print("=== Crypto Cipher Tool ===")
     show_help()
 
     while True:
-        choice = input("Choose an option (E, D, B, V, B64, R13, ATB, T, P, A, R, HILL, XOR, HELP, EXIT): ").lower()
+        choice = input("Choose an option (E, D, B, V, B64, R13, ATB, T, P, A, R, HILL, XOR, TEST, HELP, EXIT): ").lower()
 
         if choice == 'exit':
             print("👋 Goodbye!")
             break
         elif choice == 'help':
             show_help()
+
+        elif choice == 'test':
+            print("\n🔍 Running all unit tests...\n")
+            loader = unittest.TestLoader()
+            suite = loader.discover('.', pattern='test_all_ciphers.py')
+            runner = unittest.TextTestRunner(verbosity=2)
+            runner.run(suite)
 
         elif choice in ['e', 'd', 'b']:
             text = input("Enter your message: ")
@@ -203,5 +194,7 @@ def main():
         else:
             print("❌ Invalid choice. Type 'help' to see available options.")
 
+
 if __name__ == "__main__":
     main()
+

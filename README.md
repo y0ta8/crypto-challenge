@@ -99,6 +99,10 @@ This project is focused on building an encryption and decryption tool using diff
 - Integrated Atbash Cipher into the CLI tool
 ---
 
+### ✅ Day 15: 	Unit Testing All Ciphers
+- Added test_all_ciphers.py, a Python unit test suite using unittest. it validates all implemented 
+  cipher using known input/output pairs to ensure correctness. 
+
 ## Usage
 
 1. Clone the repository.
